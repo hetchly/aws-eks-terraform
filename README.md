@@ -80,6 +80,20 @@ ip-10-0-21-183.ap-southeast-2.compute.internal   Ready    <none>   5m10s   v1.14
 ip-10-0-22-114.ap-southeast-2.compute.internal   Ready    <none>   5m2s    v1.14.7-eks-1861c5
 ```
 
+- To add IAM users, Ask the EKS cluster owner or admin to add your IAM user or role to aws-auth ConfigMap. To edit aws-auth ConfigMap in a text editor, the cluster owner or admin must run the following command. https://aws.amazon.com/premiumsupport/knowledge-center/eks-api-server-unauthorized-error/
+```
+$ aws sts get-caller-identity
+$ kubectl edit configmap aws-auth -n kube-system
+$ aws eks update-kubeconfig --name eks-cluster-name --region aws-region
+```
+```
+mapUsers: |
+  - userarn: arn:aws:iam::707538076348:user/jrdalino@gmail.com(opens in new tab)
+    username: testuser
+    groups:
+      - system:masters
+```
+
 ## Inputs
 | Name | Description |
 |------|-------------|
