@@ -71,7 +71,7 @@ resource "aws_eks_cluster" "this" {
 
   # TODO: tags
  
-  version  = "1.16" # (Optional) Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS. 
+  version  = "1.15" # (Optional) Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS. 
 
   depends_on = [
     aws_iam_role_policy_attachment.cluster_policy,
